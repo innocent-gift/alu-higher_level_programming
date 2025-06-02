@@ -1,17 +1,11 @@
 #!/usr/bin/node
-
 const fs = require('fs');
-const filePath = process.argv[2];
+const file = process.argv.slice(2)[0];
 
-if (!filePath) {
-  console.error('Please provide a file path as argument');
-  process.exit(1);
-}
-
-fs.readFile(filePath, 'utf-8', (err, data) => {
+fs.readFile(file, 'utf8', (err, contents) => {
   if (err) {
-    console.error(err);
-    process.exit(1);
+    console.log(err);
+  } else {
+    console.log(contents);
   }
-  process.stdout.write(data);
 });
